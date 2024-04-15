@@ -55,10 +55,12 @@
         <div id="CUF">
             <div class="wrapper">
                 <h1>Contact us</h1>
-                <img src="images/U.png">
+                <div id="xxxxx">
+                    <img src="images/U.png">
+                </div>
                 <form action="#">
                     <div class="w-2">
-                        <p>Name</p>
+                        <p>Name *</p>
                         <input name="Name" type="text" required>
                         <p>Company Name</p>
                         <input name="CompanyName" type="text" required>
@@ -78,12 +80,19 @@
                         <select id="role">
                             <option value="seed_producer">seed producer</option>
                             <option value="other">other</option>
-                        </select>
+                        </select>   
                         <p>If other, please specify</p>
                         <input name="description" type="text">
                         <p>You are interested in</p>
                         <textarea name="interests" required></textarea>
-                        <input type="submit" name="send_message" value="Send Message">
+                        <p>Please type this code</p>
+                        <div class="SM">
+                            <div id="Capcha">
+                                <img src="images/Capcha.png" alt="Capcha">
+                            </div>
+                            <input name="capcha" type="text">
+                            <input type="submit" name="SendMessage" value="Send Message">
+                        </div>
                     </div>
                 </form>
             </div>
