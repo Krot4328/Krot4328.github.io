@@ -1,3 +1,9 @@
+@media (max-width: 1440px) {
+    #CenterPage .wrapper {
+        width: calc(100% - 50px);
+    }
+}
+
 @media (max-width: 1180px) {
     .header .wrapper .row .w-2:first-child {
         width: 25%;
@@ -286,6 +292,9 @@
 }
 
 @media (max-width: 700px) {
+    #CenterPage .wrapper {
+        width: calc(100% - 300px);
+    }
     #MainMenu ul {
         display: block;
     }
@@ -568,5 +577,17 @@
     }
     #addres h2 {
         margin: 25px 0 0 0;
+    }
+}
+
+@media (max-width: 400px) {
+    #CenterPage .wrapper {
+        width: calc(100% - 300px);
+    }
+}
+
+@media (max-width: 320px) {
+    #CenterPage .wrapper {
+        width: calc(100% - 5px);
     }
 }
