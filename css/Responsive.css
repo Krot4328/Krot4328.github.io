@@ -1,9 +1,3 @@
-@media (max-width: 1220px) {
-    .wrapper {
-        max-width: calc(100% - 50px) !important;
-    }
-}
-
 @media (max-width: 1180px) {
     .header .wrapper .row .w-2:first-child {
         width: 25%;
