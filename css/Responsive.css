@@ -582,12 +582,6 @@
 
 @media (max-width: 400px) {
     #CenterPage .wrapper {
-        width: calc(100% - 300px);
-    }
-}
-
-@media (max-width: 320px) {
-    #CenterPage .wrapper {
-        width: calc(100% - 5px);
+        width: calc(100% - 15px);
     }
 }
