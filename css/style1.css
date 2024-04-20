@@ -61,19 +61,10 @@ a {
     align-items: flex-end;
 }
 
-#logo {
-    padding-top: 10px;
-}
-
 #logo img {
-    width: 226px;
-    height: 113px;
-}
-
-.logo img {
     width: 166px;
     height: 83px;
-    margin-top: 10px;
+    padding-top: 10px;
 }
 
 #search {
@@ -83,7 +74,7 @@ a {
     width: 100%;
     vertical-align: bottom;
     margin-top: 10px;
-    margin-bottom: 43px;
+    margin-bottom: 20px;
 }
 
 #search input {
@@ -230,15 +221,20 @@ a {
 }
 
 #Fragment .w-3 h3 {
-    font-size: 20px;
+    font-size: 25px;
     color: #324950;
     display: flex;
     align-items: start;
     flex-direction: column;
 }
 
+#Fragment .w-3 hr {
+    width: 96%;
+    margin-left: 0;
+    border: 1px solid #324950;
+}
+
 #Fragment .w-3 p {
-    border-top: 1px solid #324950;
     margin-top: 0;
     font-size: 17px;
     color: #324950;
@@ -254,6 +250,7 @@ a {
     margin: 0 auto;
     padding: 10px 0 20px;
     margin-top: 30px;
+    justify-content: center;
 }
 
 .Sample {
@@ -261,6 +258,7 @@ a {
     flex-direction: column;
     margin: 0 15px 30px 15px;
 }
+
 .Sample img {
     max-height: 252px;
     object-fit: cover;
@@ -268,6 +266,12 @@ a {
     width: 100%;
     min-width: 349px;
 }
+
+.Sample #UI {
+    width: 349px;
+    height: 100px;
+}
+
 .Sample div {
     text-align: center;
     line-height: 142.7%;
@@ -278,6 +282,7 @@ a {
     padding: 9px 0;
     min-height: 51px;
 }
+
 .Sample h3 {
     margin: 0;
     font-weight: bold;

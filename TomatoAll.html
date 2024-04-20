@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=320, initial-scale=1.0">
-    <title>Tomato All</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.min.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <title>Chili Pepper All</title>
 </head>
 <body>
     <div class="header">
@@ -52,12 +54,12 @@
     </div>
     <div class="content">
         <div id="TomatoSlider">
-            <img src="images/bg_tomato.png" alt="BG tomato all">
+            <img src="images/JSImages/ChpBG.jpg" alt="BG chili pepper all">
         </div>
         <div id="MainContent">
             <div class="wrapper">
                 <div id="Title">
-                    <h1>Agridera Fresh Market Tomato Hybrids</h1>
+                    <h1>Agridera Fresh Market Chili Peppers Hybrids</h1>
                     <img src="images/U.png">
                 </div>
                 <div id="Info">
@@ -87,6 +89,7 @@
                     <div class="row">
                         <div class="w-3">
                             <h3>Greenhouse Tomato Breeding Program</h3>
+                            <hr>
                             <p> 
                                 <b>This breeding is aimed for the Spanish and
                                 Turkish markets. </b>For single and cluster
@@ -100,6 +103,7 @@
                         </div>
                         <div class="w-3">
                             <h3>Open-field Indeterminate Tomatoes</h3>
+                            <hr>
                             <p>
                                 <b>This breeding is for Brazilian, Moroccan,
                                 and Turkish markets.</b> The main focus is on
@@ -113,6 +117,7 @@
                         </div>
                         <div class="w-3">
                             <h3>Open-field Bush Type Tomatoes</h3>
+                            <hr>
                             <p>
                                 <b>This breeding is for Mediterranean
                                 markets. </b>We breed round and elongated
@@ -135,64 +140,16 @@
                 </div>
             </div>
             <div class="Samples">
-                <a class="Sample" href="TomatoOne.html">
-                    <img src="images/TS.jpg" alt="tomato sample 1">
-                    <div>
-                        <h3>TAG 1000 (TAG 853)</h3>
-                        <p>Tomato Determinate Red Standard Round</p>
-                    </div>
-                </a>
-                <a class="Sample" href="TomatoOne.html">
-                    <img src="images/TS.jpg" alt="tomato sample 2">
-                    <div>
-                        <h3>TAG 1001 (TAG 855)</h3>
-                        <p>Tomato Determinate Red Standard Round</p>
-                    </div>
-                </a>
-                <a class="Sample" href="TomatoOne.html">
-                    <img src="images/TS.jpg" alt="tomato sample 3">
-                    <div>
-                        <h3>TAG 1002 (TAG 809)</h3>
-                        <p>Tomato Determinate Red Standard Round</p>
-                    </div>
-                </a>
-                <a class="Sample" href="TomatoOne.html">
-                    <img src="images/TS.jpg" alt="tomato sample 4">
-                    <div>
-                        <h3>TAG 1003 (TAG 834)</h3>
-                        <p>Tomato Determinate Red Standard Round</p>
-                    </div>
-                </a>
-                <a class="Sample" href="TomatoOne.html">
-                    <img src="images/TS.jpg" alt="tomato sample 5">
-                    <div>
-                        <h3>TAG 1004 (TAG 848)</h3>
-                        <p>Tomato Determinate Red BEEF Round</p>
-                    </div>
-                </a>
-                <a class="Sample" href="TomatoOne.html">
-                    <img src="images/TS.jpg" alt="tomato sample 6">
-                    <div>
-                        <h3>TAG 1005 (TAG 800)</h3>
-                        <p>Tomato Determinate Red Standard Round</p>
-                    </div>
-                </a>
-                <a class="Sample" href="TomatoOne.html">
-                    <img src="images/TS.jpg" alt="tomato sample 7">
-                    <div>
-                        <h3>TAG 1006 (TAG 898)</h3>
-                        <p>Tomato Determinate Red Elongated</p>
-                    </div>
-                </a>
-                <a class="Sample" href="TomatoOne.html">
-                    <img src="images/TS.jpg" alt="tomato sample 8">
-                    <div>
-                        <h3>TAG 1007 (TAG 816)</h3>
-                        <p>Tomato Determinate Red Elongated</p>
+                <a class="Sample" :href=" 'TomatoOne.html#' + ChiliPepper.id " v-for="ChiliPepper in products">
+                    <img :src="ChiliPepper.image" alt="Chili Pepper image">
+                    <div id="UI">
+                        <h3>{{ChiliPepper.title}}</h3>
+                        <p>{{ChiliPepper.ShortText}}</p>
                     </div>
                 </a>
             </div>
         </div>
+    </div>
     <div class="footer">
         <div id="TopBottom">
             <div class="wrapper">

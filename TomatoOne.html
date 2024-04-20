@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=320, initial-scale=1.0">
-    <title>Tomato One</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.min.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <title>Chili pepper One</title>
 </head>
 <body>
     <div id="header1">
@@ -56,75 +58,41 @@
                 <div id="Return">
                     <a href="TomatoAll.html">
                         <img src="images/Arrow.png" alt="arrow">
-                        <p> Return to all tomatoes</p>
+                        <p> Return to all chili peppers</p>
                     </a>
                 </div>
                 <div class="row">
                     <div class="w-2">
                         <div id="Title">
                             <h1>
-                                <span>TAG 1002 (TAG 809)</span><br>
-                                Tomato Determinate
-                                Red Standard Round
+                                <span>{{product.title}}</span><br>
+                                {{product.ShortText}}
                             </h1>
                             <img src="images/U.png">
                         </div>
                         <div id="excerption">
-                            <img src="images/TI.png" alt="TomatoIcon">
+                            <img src="images/JSImages/ChI.png" alt="ChiliPepperIcon">
                             <p>
-                                Very high yield and
-                                excellent fruits quality!
+                                Very high yield and excellent fruits quality!
                             </p>
-                        </div>
-                        <div class="ListInfo">
-                            <h2>CHARACTERISTICS</h2>
-                            <hr>
-                            <ul>
-                                <li>
-                                    <b>Resistance</b>
-                                </li>
-                                <li>HR: ToMV:0-2; Fol: 1,2; Ve/Vd;</li>
-                                <li>IR: TYLCV</li>
-                            </ul>
-                            <h2>Plant</h2>
-                            <hr>
-                            <ul>
-                                <li>Strong vigor that provides good leaf coverage.</li>
-                                <li>Very high productivity with good fruit setting.</li>
-                                <li>Early matured variety.</li>
-                            </ul>
-                            <h2>Fruit</h2>
-                            <hr>
-                            <ul>
-                                <li>Long shelf life on plant and post harvest.</li>
-                                <li>Nice shiny attractive deep red color.</li>
-                                <li>Average fruit size: 140 – 160 grams.</li>
-                            </ul>
                         </div>
                     </div>
                     <div class="w-2">
                         <div id="PDFImage">
                             <div id="TomatoImage">
-                                <img src="images/TS.jpg" alt="tomato sample">
+                                <img :src="product.image" alt="tomato sample">
                             </div>
-                            <a id="DPDF" href="#">
-                                <p>Download PDF</p>
+                            <a id="DPDF" href="#" @click.prevent="addToCart(product.id)" v-if="!btnVisible">
+                                <p>Add to cart</p>
+                            </a>
+                            <a id="DPDF" href="ContactUs.html" v-if="btnVisible">
+                                <p>Go to cart</p>
                             </a>
                         </div>
-                        <div class="ListInfo">
-                            <h2>Cycle</h2>
-                            <hr>
-                            <ul>
-                                <li>Spring</li>
-                                <li>Fall</li>
-                                <li>Winter</li>
-                            </ul>
-                            <h2>Color</h2>
-                            <hr>
-                            <ul>
-                                <li>Red</li>
-                            </ul>
-                        </div>
+                    </div>
+                    <div class="ListInfo">
+                        <h2>Description</h2>
+                        <p>{{product.description}}</p>
                     </div>
                 </div>
             </div>
