@@ -33,17 +33,21 @@ var app = new Vue ({
             {
                 id:5, 
                 title:"Tabasco pepper", 
-                ShortText:'Provides balanced heat and tang, essential for Tabasco sauce', 
+                ShortText:'Tabasco pepper: small, fiery, sauce base.', 
                 image:'../images/JSImages/TabascoPepper.jpg', 
                 description:"The Tabasco pepper, a beloved heirloom variety, is renowned for its distinctive flavor and fiery heat. These peppers boast a unique appearance, characterized by their small size and vibrant red color. Their pods are typically elongated, resembling slender cylinders with pointed ends, packed with intense heat. What sets Tabasco peppers apart is their exceptional spiciness, which is measured at around 30,000 to 50,000 Scoville Heat Units (SHU). Despite their intense heat, Tabasco peppers also offer a subtle fruity undertone, adding complexity to their flavor profile. Tabasco peppers are prized for their versatility in the kitchen. Whether used fresh, dried, or in sauce form, these peppers excel in adding a kick to a variety of dishes. They are particularly favored for their role in the iconic Tabasco sauce, a staple condiment known for its tangy flavor and fiery heat. Moreover, Tabasco peppers are valued for their ability to withstand both hot and humid climates, making them a popular choice for cultivation in regions like Louisiana, where the famous Tabasco sauce originates. Widely regarded as a culinary standard, Tabasco peppers enjoy popularity among chefs, home cooks, and hot sauce enthusiasts alike. Their reputation is built upon their consistent heat levels, distinctive flavor, and adaptability to different culinary applications. Whether used to spice up salsas, marinades, or even cocktails, Tabasco peppers remain a beloved choice for those who appreciate the bold flavor and fiery kick they bring to the table."
             }
         ],
-        product:{},
-        btnVisible: 0
+        product: {},
+        btnVisible: 0,
+        cart: [],
+        contactFields: [],
+        formVisible: 1,
     },
     mounted:function(){
         this.getProduct();
         this.checkInCart();
+        this.getCart();
     },
     methods: {
         getProduct:function(){
@@ -64,12 +68,42 @@ var app = new Vue ({
 
             if(cart.indexOf(String(id))==-1) {
                 cart.push(id);
-                window.localStorage.setItem('cart',cart.join());
+                window.localStorage.setItem('cart',cart.join(', '));
                 this.btnVisible=1;
             }
         },
         checkInCart:function(){
             if(this.product && this.product.id && window.localStorage.getItem('cart').split(', ').indexOf(String(this.product.id))!=-1) this.btnVisible=1;
+        },
+        getCart: function() {
+            var cartIds = [];
+            var storedCart = window.localStorage.getItem('cart');
+            if (storedCart) {
+                cartIds = storedCart.split(', ').map(id => parseInt(id));
+                this.cart = this.products.filter(product => cartIds.includes(product.id));
+            }
+        },
+        removeFromCart: function(id) {
+            var cart = [];
+            if (window.localStorage.getItem('cart')) {
+                cart = window.localStorage.getItem('cart').split(', ');
+            }
+            
+            var index = cart.indexOf(String(id));
+            
+            if (index !== -1) {
+                cart.splice(index, 1);
+                window.localStorage.setItem('cart', cart.join(', '));
+                this.cart = this.cart.filter(product => product.id !== id);
+            }
+        },
+        makeOrder: function() {
+            var orderedProducts = this.cart.map(product => product.title);
+            this.cart = [];
+            window.localStorage.removeItem('cart');
+        
+            this.formVisible = 0;
+            this.orderedProducts = orderedProducts;
         }
     }
 })

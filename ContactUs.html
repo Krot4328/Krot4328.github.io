@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=320, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.min.js" defer></script>
+    <script src="js/main.js" defer></script>
     <title>Contact Us</title>
 </head>
 <body>
@@ -62,43 +64,70 @@
                         <img src="images/U.png">
                     </div>
                 </div>
-                <form action="#">
-                    <div class="w-2">
-                        <p>Name *</p>
-                        <input name="Name" type="text" required>
-                        <p>Company Name</p>
-                        <input name="CompanyName" type="text" required>
-                        <p>Position</p>
-                        <input name="Position" type="text" required>
-                        <p>City</p>
-                        <input name="City" type="text" required>
-                        <p>Country</p>
-                        <input name="Country" type="text" required>
-                        <p>Telephone</p>
-                        <input name="Tel" type="text" required>
-                        <p>Email</p>
-                        <input name="email" type="email" required>
-                    </div>
-                    <div class="w-2">
-                        <p>You are a</p>
-                        <select id="role">
-                            <option value="seed_producer">seed producer</option>
-                            <option value="other">other</option>
-                        </select>   
-                        <p>If other, please specify</p>
-                        <input name="description" type="text">
-                        <p>You are interested in</p>
-                        <textarea name="interests" required></textarea>
-                        <p>Please type this code</p>
-                        <div class="SM">
-                            <div id="Capcha">
-                                <img src="images/Capcha.png" alt="Capcha">
-                            </div>
-                            <input name="capcha" type="text">
-                            <input type="submit" name="SendMessage" value="Send Message">
+                <div id="ListCartCreate" v-if="cart.length > 0">
+                    <div id="ListCart" v-for="product in cart" :key="product.id">
+                        <img :src="product.image" alt="Product">
+                        <div id="CartDescription">
+                            <h2>{{product.title}}</h5>
+                            <p>{{product.ShortText}}</p>
                         </div>
+                        <a href="#" @click.prevent="removeFromCart(product.id)">
+                            <img src="images/x.png">
+                        </a>
                     </div>
-                </form>
+                </div>
+                <div v-if="formVisible">
+                    <form @submit.prevent="makeOrder">
+                        <div class="w-2">
+                            <p>Name *</p>
+                            <input name="Name" type="text" v-model="contactFields.name" required>
+                            <p>Company Name</p>
+                            <input name="CompanyName" type="text" v-model="contactFields.companyName" required>
+                            <p>Position</p>
+                            <input name="Position" type="text" v-model="contactFields.position" required>
+                            <p>City</p>
+                            <input name="City" type="text" v-model="contactFields.city" required>
+                            <p>Country</p>
+                            <input name="Country" type="text" v-model="contactFields.country" required>
+                            <p>Telephone</p>
+                            <input name="Tel" type="text" v-model="contactFields.tel" required>
+                            <p>Email</p>
+                            <input name="email" type="email" v-model="contactFields.email" required>
+                        </div>
+                        <div class="w-2">
+                            <p>You are a</p>
+                            <select id="role" v-model="contactFields.role" required>
+                                <option value="seed_producer">seed producer</option>
+                                <option value="other">other</option>
+                            </select>   
+                            <p>If other, please specify</p>
+                            <input name="description" type="text">
+                            <p>You are interested in</p>
+                            <textarea name="interests" v-model="contactFields.interests" required></textarea>
+                            <p>Please type this code</p>
+                            <div class="SM">
+                                <div id="Capcha">
+                                    <img src="images/Capcha.png" alt="Capcha">
+                                </div>
+                                <input name="capcha" type="text">
+                                <input type="submit" name="SendMessage" value="Send Message">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="UnderForm" v-else>
+                    <h2>Thank you for your order, you have entered the following data:</h2>
+                    <p>Name: {{contactFields.name}}</p>
+                    <p>Position: {{contactFields.position}}</p>
+                    <p>City: {{contactFields.city}}</p>
+                    <p>County: {{contactFields.country}}</p>
+                    <p>Telephone: {{contactFields.tel}}</p>
+                    <p>Email: {{contactFields.email}}</p>
+                    <p>Role: {{contactFields.role}}</p>
+                    <p>Your interests: {{contactFields.interests}}</p>
+                    <h3>Your order:</h3>
+                    <p v-for="carrot in orderedProducts" :key="product">{{carrot}}</p>
+                </div>
             </div>
         </div>
         <div id="addres">
@@ -110,7 +139,7 @@
                 Gedera 70750, Israel.<br>
                 Telephone <a href="tel:+97289449222">+972 8 944 9222</a>
             </p>
-        </div>        
+        </div>
     </div>
     <div class="footer">
         <div id="TopBottom">

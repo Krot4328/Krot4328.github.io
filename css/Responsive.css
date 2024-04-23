@@ -744,4 +744,26 @@
     #CenterPage .wrapper {
         width: calc(100% - 15px);
     }
+
+    #MainContent .Samples img {
+        width: 300px;
+    }
+
+    #MainContent .Samples #UI {
+        width: 300px;
+    }
+
+    #ListCartCreate {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #ListCart {
+       width: 250px;
+       height: 330px;
+    }
+
+    #ListCart a {
+        left: 105px;
+    }
 }
